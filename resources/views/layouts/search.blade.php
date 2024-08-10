@@ -1,10 +1,10 @@
 <!--Start search form-->
-<div class="main-search-form bg-brand-4">
+<div class="main-search-form " style="background-color: #7fa1c3;">
     <div class="container">
         <div class=" pt-50 pb-50 ">
             <div class="row mb-20">
                 <div class="col-12 align-self-center main-search-form-cover m-auto">
-                    <p class="text-center"><span class="display-1">Search</span></p>
+                    <p class="text-center text-white"><span class="display-1">Cari Artikel</span></p>
                     <form action="{{ route('search') }}" method="GET" class="search-header">
                         @csrf
                         <div class="input-group w-100">
@@ -20,10 +20,10 @@
             </div>
             <div class="row mt-80 text-center">
                 <div class="col-12 font-small suggested-area">
-                    <h5 class="suggested font-heading mb-20 text-white"> <strong>Suggested keywords:</strong></h5>
+                    <h5 class="suggested font-heading mb-20 text-white"> <strong>Kategori:</strong></h5>
                     <ul class="list-inline d-inline-block">
                         @foreach ($tagItem as $item )
-                        <li class="list-inline-item"><a href="{{ route('search.tag', $item->tag) }}">{{ $item->tag }}</a></li>
+                        <li class="list-inline-item"><a href="{{ route('search.tag', $item->tag) }}" class="text-white">{{ $item->tag }}</a></li>
                         @endforeach
                     </ul>
                 </div>

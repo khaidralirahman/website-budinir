@@ -7,4 +7,4 @@
     <link rel="stylesheet" href="{{ asset('assets/') }}/css/style.css">
     <link rel="stylesheet" href="{{ asset('assets/') }}/css/widgets.css">
     <link rel="stylesheet" href="{{ asset('assets/') }}/css/responsive.css">
-
+    <link rel="stylesheet" href="{{ asset('icon/') }}/css/all.min.css">

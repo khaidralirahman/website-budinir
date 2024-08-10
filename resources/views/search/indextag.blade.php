@@ -21,11 +21,12 @@
             <div class="container">
                 <div class="archive-header pb-65">
                     <div class="archive-header-title">
-                        <h1 class="font-heading mb-30">Hasil Pencarian</h1>
-                    </div>
-                    <div class="breadcrumb">
-                        <a href="index.html" rel="nofollow">Home</a>
-                        <span></span> Lifestyle
+                        <h1 class="font-heading mb-20" style="color: #6482ad;">Hasil Pencarian</h1>
+                        <div class="d-flex align-items-center" style="gap: 15px;">
+                            <h2 class="font-heading ">Katerori</h2>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <h2 class="font-heading " style="color: #6482ad;">{{ $tag }}</h2>
+                        </div>
                     </div>
                 </div>
                 <div class="hr"></div>
@@ -52,19 +53,16 @@
                                                         $tags = explode(',', $item->tags);
                                                     @endphp
                                                     @foreach ($tags as $tag)
-                                                    <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-dark button-shadow hover-up-3">{{ $tag }}</a>
+                                                    <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-white button-shadow hover-up-3">{{ $tag }}</a>
                                                     @endforeach
+                                                    <span class="post-date font-md text-grey-400">{{ $item->created_at->format('d F Y') }}</span>
                                                 </div>
-                                                <h4 class="post-title mb-40">
+                                                <h4 class="post-title mb-5">
                                                     <a class="" href="/artikel/detail/{{ $item->slug }}">{{ $item->title }}</a>
                                                 </h4>
                                                 <div class="d-flex" style="justify-content: space-between;">
                                                     <div class="post-excerpt text-grey-400 mb-30">
                                                         {{ substr(strip_tags($item->description), 0, 100) }}{{ strlen(strip_tags($item->description)) > 100 ? '...' : '' }}
-                                                    </div>
-                                                    <div class="text-right post-list-icon align-self-center w-30">
-                                                        <a><i class="elegant-icon icon_ribbon_alt "></i></a>
-                                                        <a><i class="elegant-icon icon_heart_alt "></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,11 +91,11 @@
                                                     </a>
                                                 </div>
                                                 <div class="post-content media-body align-self-center">
-                                                    <h5 class="post-title mb-15 text-limit-3-row font-medium">
-                                                        <a href="/artikel/detail/{{ $item->slug }}" tabindex="0">{{ $item->title }}</a>
+                                                    <h5 class="post-title mb-10 text-limit-3-row font-medium">
+                                                        <a href="/artikel/detail/{{ $item->slug }}" style="color: #252525;" tabindex="0">{{ $item->title }}</a>
                                                     </h5>
                                                     <div class="entry-meta meta-1 float-left font-sm">
-                                                        <span class="post-on has-dot">{{ $item->created_at->diffForHumans() }}</span>
+                                                        <span class="post-on has-dot" style="color: #6482AD;">{{ $item->created_at->format('d F Y') }}</span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -67,14 +67,30 @@
                                     <i class="ti ti-message"></i>
                                     {{ $form->comment->count() }} komentar
                                 </span>
+                                <span class="card-text" style="margin-right: 15px;">
+                                    <i class="ti ti-eye"></i>
+                                    {{ $form->views }} dilihat
+                                </span>
                             </div>
                             <p class="card-text">
                                 {!! $form->description !!}
                             </p>
+                            <div class="col-sm-12 col-lg-12 mb-2">
+                                <div class="card p-2 h-100 shadow-none border">
+                                    <div class="rounded-2 text-center">
+                                        <object data="{{ asset('assets/file/' . $form->file) }}"
+                                            type="application/pdf" width="100%" height="600px">
+                                            <p>Browser tidak mendukung tampilan PDF. Anda dapat <a
+                                                    href="{{ asset('assets/documentJabatans/' . $form->file) }}"
+                                                    download>men-download</a> dokumen ini.</p>
+                                        </object>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row mb-2">
                                 <div class="col-md-6 col-lg-6 mb-3">
                                     <h5 class="card-title mb-10" style="font-size: 24px;">Daftar komentar</h5>
-                                    @foreach ($form->comment as $comment)
+                                    @forelse ($form->comment as $comment)
                                         <div class="column" style="margin-top: 10px; margin-bottom: 10px">
                                             <div class="d-flex align-items-center" style="justify-content: space-between;">
                                                 <div class="column" style="gap: 5px">
@@ -92,11 +108,14 @@
                                                 Hapus komentar
                                             </button>
                                         </form>
-                                    @endforeach
+                                    @empty
+                                        <h5 class="card-title" style="margin-bottom: 5px">tidak ada komentar</h5>
+                                    @endforelse
+
                                 </div>
                                 <div class="col-md-6 col-lg-6 mb-3">
                                     <h5 class="card-title mb-10" style="font-size: 24px;">Daftar suka</h5>
-                                    @foreach ($form->likes as $like)
+                                    @forelse ($form->likes as $like)
                                         <div class="column" style="margin-top: 10px; margin-bottom: 10px">
                                             <div class="d-flex align-items-center" style="justify-content: space-between;">
                                                 <div class="column" style="gap: 5px">
@@ -106,7 +125,9 @@
                                                 <p>{{ $like->created_at->diffForHumans() }}</p>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @empty
+                                        <h5 class="card-title" style="margin-bottom: 5px">tidak ada suka</h5>
+                                    @endforelse
                                 </div>
                             </div>
 

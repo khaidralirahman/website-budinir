@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('contributor')->nullable();
             $table->text('description')->nullable();
             $table->string('photo')->nullable();
+            $table->string('file')->nullable();
             $table->unsignedBigInteger('likes')->default(0);
             $table->unsignedBigInteger('comments')->default(0);
             $table->string('slug')->unique();

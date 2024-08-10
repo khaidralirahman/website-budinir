@@ -26,7 +26,7 @@
                     @foreach ($tags as $tag)
                     <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-white button-shadow hover-up-3">{{ $tag }}</a>
                     @endforeach
-                    <span class="post-date text-muted font-md">{{ $Form->time }}</span>
+                    <span class="post-date text-muted font-md">{{ $Form->created_at->format('d F Y') }}</span>
                 </div>
                 <h1 class="entry-title mb-50 fw-700">
                     {{ $Form->title }}
@@ -37,7 +37,7 @@
                             <div class="entry-meta meta-1 font-small color-grey float-left mt-10">
                                 <span class="hit-count mr-15"><i class="elegant-icon icon_comment_alt mr-5"></i>{{ $Form->comment->count() }} komentar</span>
                                 <span class="hit-count mr-15"><i class="elegant-icon icon_like mr-5"></i>{{ $Form->likes->count() }} suka</span>
-                                <span class="hit-count"><i class="elegant-icon icon_star-half_alt mr-5"></i>{{ $Form->views }} dilihat</span>
+                                <span class="hit-count"><i class="fa-regular fa-eye mr-5"></i>{{ $Form->views }} dilihat</span>
                             </div>
                         </div>
                     </div>
@@ -52,6 +52,16 @@
                 <div class="excerpt mb-30">
                     <p>{!! $Form->description !!}</p>
                 </div>
+                <div class="card p-2 h-100 shadow-none border">
+                    <div class="rounded-2 text-center">
+                        <object data="{{ asset('assets/file/' . $Form->file) }}"
+                            type="application/pdf" width="100%" height="600px">
+                            <p>Browser tidak mendukung tampilan PDF. Anda dapat <a
+                                    href="{{ asset('assets/documentJabatans/' . $Form->file) }}"
+                                    download>men-download</a> dokumen ini.</p>
+                        </object>
+                    </div>
+                </div>
                 <div class="entry-bottom mt-50 mb-30 wow fadeIn animated">
                     <div class="tags w-50 w-sm-100">
                         <h5 class="mb-15">Tags: </h5>
@@ -64,10 +74,6 @@
                     </div>
                     <div class="single-social-share clearfix wow fadeIn animated mb-15 w-50 w-sm-100">
                         <ul class="header-social-network d-inline-block list-inline float-md-right mt-md-0 mt-4">
-                            <li class="list-inline-item text-muted"><span>Share this: </span></li>
-                            <li class="list-inline-item"><a class="social-icon fb text-xs-center" target="_blank" href="#"><i class="elegant-icon social_facebook"></i></a></li>
-                            <li class="list-inline-item"><a class="social-icon tw text-xs-center" target="_blank" href="#"><i class="elegant-icon social_twitter "></i></a></li>
-                            <li class="list-inline-item"><a class="social-icon pt text-xs-center" target="_blank" href="#"><i class="elegant-icon social_pinterest "></i></a></li>
                             <li class="list-inline-item">
                                 <form action="{{ route('likes.store', $Form->slug) }}" method="POST" class="d-inline">
                                     @csrf
@@ -75,6 +81,12 @@
                                         <i class="elegant-icon icon_like"></i> {{ $liked ? 'Unlike' : 'Like' }}
                                     </button>
                                 </form>
+                            </li>
+                            <li class="list-inline-item text-dark"><span>Share this: </span></li>
+                            <li class="list-inline-item">
+                                <a id="copyButton" class="social-icon tw text-xs-center " onclick="copyToClipboard()">
+                                    <i class="fa-solid fa-copy"></i>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -164,6 +176,16 @@
     @include('layouts.footer')
     <div class="dark-mark"></div>
     @include('layouts.script')
+    <script>
+        function copyToClipboard() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(function() {
+                alert('URL copied to clipboard');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
 </body>
 
 </html>

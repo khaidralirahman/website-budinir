@@ -63,17 +63,17 @@
                                 <h5 class="card-header" style="font-size: 16px;">cari artikel</h5>
                                 <input
                                     type="search"
-                                    name="nama"
+                                    name="title"
                                     class="form-control"
                                     placeholder="cari artikel berdasarkan judul"/>
                               </div>
                               <div  style="display: flex; align-items: center; height: fit-content; margin-right: 10px; width: 100%;">
                                 <h5 class="card-header" style="font-size: 16px;">Tag</h5>
-                                <select id="tag" class="form-select" name="tag">
+                                <select id="tag" class="form-select" name="tags">
                                     <option value="" disabled selected>pilih tag</option>
                                     @foreach ($tag as $item)
-                                    <option value="{{ $item->title }}" {{ old('title') === $item->title ? 'selected' : '' }}>
-                                        {{ $item->title }}
+                                    <option value="{{ $item->tag }}" {{ old('tag') === $item->tag ? 'selected' : '' }}>
+                                        {{ $item->tag }}
                                     </option>
                                     @endforeach
                                 </select>

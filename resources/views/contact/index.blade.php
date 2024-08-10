@@ -71,7 +71,7 @@
                                 <img src="assets/imgs/theme/svg/map.svg" alt="">
                             </div>
                             <h5 class="mb-50">
-                                Lorem 142 Str, 2352, Ipsum<br> State, USA
+                                Jl. Bina Mukti No. 7, Komplek Buciper, Kota Cimahi-40512
                             </h5>
                         </div>
                     </div>

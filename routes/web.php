@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:super_admin']], function () {
     Route::post('/admin/tag/create/store', [TagController::class, 'store'])->name('tag.store');
     Route::get('/admin/tag/edit/{id}', [TagController::class, 'edit'])->name('tag.edit');
     Route::put('/admin/tag/update/{id}', [TagController::class, 'store'])->name('tag.update');
+    Route::delete('/admin/tag/delete/{id}', [TagController::class, 'delete'])->name('tag.delete');
 
     Route::get('/admin/tentang-saya', [AboutUsController::class, 'admin']);
 

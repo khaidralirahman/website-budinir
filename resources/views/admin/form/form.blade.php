@@ -76,17 +76,6 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="defaultInput" class="form-label">Contriburor</label>
-                                <input id="defaultInput" @error('contributor') is-invalid @enderror name="contributor"
-                                    class="form-control" type="text" placeholder="contributor" autofocus
-                                    value="{{ old('contributor') }}" />
-                                @error('contributor')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <input id="description" type="hidden" name="description" value="{{ old('description') }}"
                                     placeholder="input job description">
@@ -96,12 +85,17 @@
                             </div>
                             <small class="text-light fw-medium">Insert thumbnail</small>
                             <div class="mb-3">
-                                <label for="formFile" class="form-label">Default file input example</label>
-                                <input class="form-control" name="photo" type="file" id="formFile" />
+                                <label for="formFile" class="form-label">header photo</label>
+                                <input class="form-control" name="photo" type="photo" id="formFile" />
+                            </div>
+                            <small class="text-light fw-medium">Insert file</small>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">pdf/word/excel</label>
+                                <input class="form-control" name="file" type="file" id="formFile" accept="application/pdf" />
                             </div>
                           <div class="row">
                             <div class="col-12">
-                              <button type="submit" class="btn btn-primary">Submit</button>
+                              <button type="submit" class="btn btn-primary submit">Submit</button>
                             </div>
                           </div>
                         </form>
@@ -151,7 +145,32 @@
     <script src="{{ asset('assets admin/assets/') }}/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js"></script>
     <script src="{{ asset('assets admin/assets/') }}/js/forms-file-upload.js"></script>
     <script src="{{ asset('assets admin/assets/') }}/vendor/libs/dropzone/dropzone.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).on('click', '.submit', function(e){
+            var notificationid = $(this).attr('data-id');
+            e.preventDefault();
+            const form = $(this).closest('form');
+            Swal.fire({
+            title: "Simpan Artikel?",
+            text: "Artikel yang anda simpan bisa di edit kembali",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, kirim sekarang"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+                Swal.fire({
+                title: "Artikel berhasil disimpan",
+                text: "Selamat menikmati hari anda",
+                icon: "success"
+                });
+            }
+            });
+        });
+    </script>
     <script>
         document.addEventListener('trix-attachment-add', function(event) {
             if (event.attachment.file) {

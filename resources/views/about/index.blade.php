@@ -31,7 +31,7 @@
                             Pada tahun 2024 ini, saya ingin menuliskan berbagai pengalaman dan pengetahuan saya dengan harapan dapat bermanfaat bagi pembaca.</p>
                     </div>
                     <div class="col-lg-6">
-                        <img src="assets/imgs/news/about-1.png" alt="">
+                        <img src="assets/imgs/news/img-truck.png" alt="">
                     </div>
                 </div>
             </div>
@@ -41,67 +41,14 @@
         </section>
         <section class="pt-65 pb-65 position-relative">
             <div class="container">
-                <h6 class="text-uppercase font-heading text-muted mb-15">About Our Company</h6>
-                <h2 class="font-heading mb-50">
-                    Our Mission
-                </h2>
-                <div class="row mb-30">
-                    <div class="col-lg-6">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper.</p>
-                        <p>Leget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla .</p>
-                    </div>
-                </div>
-                <img src="assets/imgs/authors/about-9.png" alt="">
-            </div>
-            <div class="shape-document">
-                <img src="assets/imgs/theme/document-2.png" alt="">
-            </div>
-        </section>
-        <section class="pb-65 position-relative">
-            <div class="hr mb-65"></div>
-            <div class="container">
-                <div class="row mb-20">
-                    <div class="col-lg-8">
-                        <h6 class="text-uppercase font-heading text-muted mb-15">About Our Company</h6>
-                        <h2 class="font-heading mb-50">
-                            Our Values
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper.</p>
-                    </div>
-                    <div class="col-lg-4 text-right">
-                        <img src="assets/imgs/theme/darts.png" alt="">
-                    </div>
-                </div>
+                <h6 class="text-uppercase font-heading text-muted mb-15">Galeri Budi Nirwanto</h6>
+                <img src="assets/imgs/news/img-truck-putih.png" alt="">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="value-box">
-                            <img class="value-icon" src="assets/imgs/theme/rocket.png" alt="">
-                            <div class="value-content">
-                                <h5 class="mb-15">Fast & Strong</h5>
-                                <p class="font-md">Lorem ipsum dolor sit amet consectetur adipisic ing elit. Illum optio quis volup tatum quaerat ratione nisi inventore voluptate molestias</p>
-                            </div>
-                        </div>
+                    <div class="col-lg-6 col-md-6 mt-30">
+                        <img src="assets/imgs/news/img-truck1.png" alt="">
                     </div>
-                    <div class="col-lg-4">
-                        <div class="value-box">
-                            <img class="value-icon" src="assets/imgs/theme/lighter.png" alt="">
-                            <div class="value-content">
-                                <h5 class="mb-15">Creative</h5>
-                                <p class="font-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum optio quis volup tatum quaerat ratione nisi inventore voluptate molestias</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="value-box">
-                            <img class="value-icon" src="assets/imgs/theme/brain.png" alt="">
-                            <div class="value-content">
-                                <h5 class="mb-15">Storm brain</h5>
-                                <p class="font-md">Lorem ipsum dolor sit amet consectetur adipi sicing elit. Illum optio quis volupt atum quaerat ratione nisi inventore voluptate molestias</p>
-                            </div>
-                        </div>
+                    <div class="col-lg-6 col-md-6 mt-30">
+                        <img src="assets/imgs/news/img-truck2.png" alt="">
                     </div>
                 </div>
             </div>

@@ -16,6 +16,7 @@ class Form extends Model
         'contributor',
         'description',
         'photo',
+        'file',
         'slug',
         'views',
     ];

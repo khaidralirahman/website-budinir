@@ -5,7 +5,7 @@
         <div class="sidebar-widget widget-creative-menu">
             <ul>
                 @foreach ($tagItem as $item )
-                <li><a href="{{ route('search.tag', $item->tag) }}">{{ $item->title }}</a></li>
+                <li><a href="{{ route('search.tag', $item->tag) }}">{{ $item->tag }}</a></li>
                 @endforeach
             </ul>
         </div>

@@ -42,12 +42,12 @@ class FormController extends Controller
     {
         $form = Form::query();
 
-        if ($request->filled('nama')) {
-            $form->where('title', 'like', '%' . $request->nama . '%');
+        if ($request->filled('title')) {
+            $form->where('title', 'like', '%' . $request->title . '%');
         }
 
         if ($request->filled('tags')) {
-            $form->where('tags', $request->input('tags'));
+            $form->where('tags', 'like', '%' . $request->tags . '%');
         }
 
         if ($request->filled('created_at')) {
@@ -59,7 +59,7 @@ class FormController extends Controller
             }
         }
 
-        $search = $form->get();
+        $search = $form->latest()->get();
 
         $tag = Tag::all();
 
@@ -83,6 +83,13 @@ class FormController extends Controller
             $upload = $request->file('photo');
             $nameFile = time() . rand(100, 999) . "." . $upload->getClientOriginalExtension();
             $upload->move(public_path('assets/photo'), $nameFile);
+            $dataUpload->photo = $nameFile;
+        }
+
+        if ($request->hasFile('file')) {
+            $upload = $request->file('file');
+            $nameFile = time() . rand(100, 999) . "." . $upload->getClientOriginalExtension();
+            $upload->move(public_path('assets/file'), $nameFile);
             $dataUpload->photo = $nameFile;
         }
 
@@ -136,6 +143,13 @@ class FormController extends Controller
     } else {
         $images[] = $form->photo;
     }
+    if ($request->hasFile('file')) {
+        $new_file = time() . rand(100, 999) . '.' . $request->file('file')->getClientOriginalExtension();
+        $request->file('file')->move(public_path('assets/file'), $new_file);
+        $files[] = $new_file;
+    } else {
+        $files[] = $form->photo;
+    }
 
     // Generate slug from title if title is changed
     if ($request->title != $form->title) {
@@ -155,6 +169,7 @@ class FormController extends Controller
         'description' => $request->description,
         'contributor' => $request->contributor,
         'photo' => $images[0],
+        'file' => $files[0],
     ]);
 
     $form->save();

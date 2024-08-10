@@ -8,7 +8,7 @@
           <script>
             document.write(new Date().getFullYear());
           </script>
-          , made by <a href="" target="_blank" class="fw-medium">BudiNir</a>
+          , made by <a href="" target="_blank" class="fw-medium">KawanLab4</a>
         </div>
       </div>
     </div>

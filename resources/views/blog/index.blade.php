@@ -31,74 +31,74 @@
                 </div>
             </div>
         </section>
-        <section class="featured-slider-1 pt-65 pb-65">
-            <div class="position-relative">
-                <div class="featured-slider-1-arrow color-white"></div>
-                <div class="container">
-                    <div class="hero-1 featured-slider-1-items mb-65">
-                        @foreach ( $form as $item )
-                        <div class="slider-single">
-                            <div class="row">
-                                <div class="col-lg-6 align-self-center">
-                                    <div class="post-meta-1 mb-20">
-                                        <a href="{{ route('search.tag', $item->tags) }}" class="tag-category bg-brand-1 shadown-1 text-dark button-shadow hover-up-3">Lifestyle</a>
-                                        <span class="post-date text-muted font-md">{{ $item->time }}</span>
-                                    </div>
-                                    <h2 class="post-title mb-30">
-                                        <a href="/artikel/detail/{{ $item->slug }}">
-                                            {{ $item->title }}
-                                        </a>
-                                    </h2>
-                                    <div class="post-excerpt text-grey-400 mb-30">
-                                        {{ substr(strip_tags($item->description), 0, 100) }}{{ strlen(strip_tags($item->description)) > 100 ? '...' : '' }}
-                                    </div>
-                                    <div class="post-meta-2 font-md d-flext align-self-center mb-md-30">
-                                        <a href="page-author.html">
-                                            <img src="{{ asset('assets/') }}/imgs/authors/author.jpg" alt="">
-                                            <span class="author-namge">{{ $item->contributor }}</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="imgcover">
-                                        <img class="border-radius-10" src="{{ asset('assets/photo/' . $item->photo) }}" alt="flow">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+        <section class="featured-grid pt-65 pb-65">
             <div class="container">
-                <div class="featured-slider-1-nav row">
-                    @foreach ( $form as $item )
-                    <div class="col d-flex transition-normal latest-small-thumb">
-                        <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale overflow-hidden">
-                            <a class="imgcover2 color-white" href="/artikel/detail/{{ $item->slug }}">
-                                <img src="{{ asset('assets/photo/' . $item->photo) }}" alt="">
-                            </a>
-                        </div>
-                        <div class="post-content media-body align-self-center">
-                            <h5 class="post-title mb-15 text-limit-2-row font-medium">
-                                <a href="/artikel/detail/{{ $item->slug }}">{{ $item->title }}</a>
-                            </h5>
-                            <div class="entry-meta meta-1 float-left font-sm">
-                                <span class="post-on">{{ $item->time }}</span>
-                                <span class="post-by has-dot">13k views</span>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="position-relative mb-md-30">
+                            <div class="carausel-post-1 hover-up border-radius-10 overflow-hidden transition-normal position-relative wow .img-fadeIn animated">
+                                <div class="slide-fade-2">
+                                    @foreach ( $form as $item )
+                                        <div class="position-relative post-thumb">
+                                            <div class="thumb-overlay position-relative" style="background-image: url({{ asset('assets/photo/' . $item->photo) }})">
+                                                <a class="img-link" href="/artikel/detail/{{ $item->slug }}"></a>
+                                                <div class="post-content-overlay text-white ml-30 mr-30 pb-30">
+                                                    <div class="post-meta-1 mb-20">
+                                                        @php
+                                                            $tags = explode(',', $item->tags);
+                                                        @endphp
+                                                        @foreach ($tags as $tag)
+                                                            <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-white button-shadow hover-up-3">{{ $tag }}</a>
+                                                        @endforeach
+                                                        <span class="post-date text-white font-md">{{ $item->created_at->format('d F Y') }}</span>
+                                                    </div>
+                                                    <h3 class="post-title">
+                                                        <a class="text-white" href="/artikel/detail/{{ $item->slug }}">{{ $item->title }}</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
+                            <div class="slide-fade-arrow-cover-2"></div>
                         </div>
                     </div>
-                    @endforeach
+                    {{-- <div class="col-lg-6">
+                        <div class="row">
+                            @foreach ($form4 as $item)
+                                <article class="col-lg-6 mb-30  mb-md-30">
+                                    <div class="position-relative post-thumb border-radius-10 overflow-hidden hover-up-3">
+                                        <div class="thumb-overlay position-relative" style="background-image: url({{ asset('assets/photo/' . $item->photo) }})">
+                                            <a class="img-link" href="/artikel/detail/{{ $item->slug }}"></a>
+                                            <div class="post-content-overlay text-white ml-30 mr-30 pb-30">
+                                                <div class="post-meta-1 mb-20">
+                                                    @php
+                                                        $tags = explode(',', $item->tags);
+                                                    @endphp
+                                                    @foreach ($tags as $tag)
+                                                        <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-white button-shadow hover-up-3">{{ $tag }}</a>
+                                                    @endforeach
+                                                </div>
+                                                <h5 class="post-title">
+                                                    <a class="text-white" href="/artikel/detail/{{ $item->slug }}">{{ $item->title }}</a>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
         <section class="recent-posts pt-65 pb-30 position-relative">
             <div class="bg-square-2"></div>
             <div class="container">
-                <div class="header-title mb-65">
-                    <h3 class="font-heading mb-0 wow fadeIn animated">Artikel</h3>
-                    <span class="sub-header-title text-grey-400 wow fadeIn animated">Don't miss new trend</span>
+                <div class="header-title mb-30">
+                    <h3 class="font-heading mb-0 wow fadeIn animated text-white">Artikel</h3>
+                    <span class="sub-header-title text-white wow fadeIn animated">Don't miss new trend</span>
                 </div>
                 <div class="row">
                     @foreach ($form as $item )
@@ -111,24 +111,20 @@
                                     $tags = explode(',', $item->tags);
                                 @endphp
                                 @foreach ($tags as $tag)
-                                <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-dark button-shadow hover-up-3">{{ $tag }}</a>
+                                <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-white button-shadow hover-up-3">{{ $tag }}</a>
                                 @endforeach
                                 </div>
                             </div>
                             <div class="post-content p-30">
                                 <div class="post-card-content">
                                     <div class="entry-meta meta-1 float-left font-md mb-10">
-                                        <span class="post-on has-dot">{{ $item->created_at->diffForHumans() }}</span>
+                                        <span class="post-on has-dot">{{ $item->created_at->format('d F Y') }}</span>
                                     </div>
-                                    <h4 class="post-title mb-30">
+                                    <h4 class="post-title mb-5">
                                         <a href="/artikel/detail/{{ $item->slug }}">{{ $item->title }}</a>
                                     </h4>
-                                    <div class="post-meta-2 font-md">
-                                        <a href="page-author.html">
-                                            <img src="{{ asset('assets/photo/' . $item->photo) }}" alt="">
-                                            <span class="author-namge">Kate Adie</span>
-                                        </a>
-                                        <span class="time-to-read has-dot">6 mins to read</span>
+                                    <div class="post-excerpt text-grey-400">
+                                        {{ substr(strip_tags($item->description), 0, 50) }}{{ strlen(strip_tags($item->description)) > 50 ? '...' : '' }}
                                     </div>
                                 </div>
                             </div>

@@ -56,14 +56,14 @@
                         <a href="/admin/form/create" class="btn btn-primary" style="height: fit-content; padding: 15px 30px 15px 30px; margin-top: 20px; margin-right: 20px;">Tambah artikel</a>
 
                     </div>
-                    <form action="{{ route('search') }}" method="GET">
+                    <form action="{{ route('form.search') }}" method="GET">
                         @csrf
                         <div class="col-md-12 d-flex justify-flex-start justify-content-space-between align-items-center ">
                             <div  style="display: flex; align-items: center; height: fit-content; margin-right: 10px; width: 100%;">
                                 <h5 class="card-header" style="font-size: 16px;">cari artikel</h5>
                                 <input
                                   type="search"
-                                  name="nama"
+                                  name="title"
                                   class="form-control"
                                   placeholder="cari artikel berdasarkan judul"/>
                               </div>
@@ -72,8 +72,8 @@
                                 <select id="tag" class="form-select" name="tag">
                                     <option value="" disabled selected>pilih tag</option>
                                     @foreach ($tag as $item)
-                                    <option value="{{ $item->title }}" {{ old('title') === $item->title ? 'selected' : '' }}>
-                                        {{ $item->title }}
+                                    <option value="{{ $item->tag }}" {{ old('tag') === $item->tag ? 'selected' : '' }}>
+                                        {{ $item->tag }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -139,6 +139,7 @@
                         </tbody>
                     </table>
                     </div>
+
                 </div>
                 <!--/ Basic Bootstrap Table -->
 

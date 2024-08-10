@@ -88,7 +88,7 @@
                                       </div>
 
                                     <div class="d-grid gap-2 col-lg-6 mx-auto">
-                                        <button class="btn btn-primary btn-lg" type="submit">Save</button>
+                                        <button class="btn btn-primary btn-lg submit" type="submit">Save</button>
                                         <!-- Tombol untuk menyimpan data -->
                                     </div>
                                 </div>
@@ -126,5 +126,31 @@
     @include('layouts admin.script')
     <!-- Vendors JS -->
     <script src="{{ asset('assets admin/assets/') }}/js/forms-extras.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).on('click', '.submit', function(e){
+            var notificationid = $(this).attr('data-id');
+            e.preventDefault();
+            const form = $(this).closest('form');
+            Swal.fire({
+            title: "Simpan Tag?",
+            text: "Tag yang anda simpan bisa di edit kembali",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, kirim sekarang"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+                Swal.fire({
+                title: "Tag berhasil disimpan",
+                text: "Selamat menikmati hari anda",
+                icon: "success"
+                });
+            }
+            });
+        });
+    </script>
   </body>
 </html>

@@ -71,7 +71,9 @@
                                                     <i class="ti ti-dots-vertical"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <form >
+                                                    <form action="{{ route('tag.delete', $item->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <a class="dropdown-item" href="{{ route('tag.edit', $item->id) }}"><i class="ti ti-pencil me-2"></i> Edit</a>
                                                         <button type="submit" class="dropdown-item"><i
                                                                 class="ti ti-trash me-2"></i> Delete</button>

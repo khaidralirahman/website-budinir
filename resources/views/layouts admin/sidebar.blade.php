@@ -4,7 +4,7 @@
     <div class="app-brand demo">
       <a href="/dashboard-super-admin" class="app-brand-link">
         <span class="app-brand-logo demo">
-            <img src="{{ asset('assets admin/') }}assets/img/favicon/logo.png" alt="" width="40px" height="40px">
+            <img src="{{ asset('assets/') }}/imgs/theme/logo.png" alt="" width="40px" height="40px">
         </span>
         <span class="app-brand-text demo menu-text fw-bold">Super admin</span>
       </a>
@@ -19,12 +19,12 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboards -->
-      <li class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
+      {{-- <li class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
         <a href="/admin/dashboard" class="menu-link">
             <i class="menu-icon tf-icons ti ti-smart-home"></i>
             <div data-i18n="Dashboards">Dashboards</div>
         </a>
-      </li>
+      </li> --}}
       <li class="menu-item {{ Request::is('admin/form') ? 'active' : '' }}">
         <a href="/admin/form" class="menu-link">
             <i class="menu-icon tf-icons ti ti-files"></i>
@@ -43,12 +43,12 @@
             <div data-i18n="Tag">Tag</div>
         </a>
       </li>
-      <li class="menu-item {{ Request::is('admin/tentang-saya') ? 'active' : '' }}">
+      {{-- <li class="menu-item {{ Request::is('admin/tentang-saya') ? 'active' : '' }}">
         <a href="/admin/tentang-saya" class="menu-link">
             <i class="menu-icon tf-icons ti ti-user"></i>
             <div data-i18n="Tentang saya">Tentang saya</div>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </aside>
   <!-- / Menu -->

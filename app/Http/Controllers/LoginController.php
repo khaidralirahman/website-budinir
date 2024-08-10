@@ -31,7 +31,7 @@ class LoginController extends Controller
     {
         if (Auth::attempt($request->only('email', 'password'))) {
             if (Auth::user()->level == 'super_admin') {
-                return redirect('/admin/dashboard');
+                return redirect('/admin/form');
                     } else {
                 return redirect('/');
             }
