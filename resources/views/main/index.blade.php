@@ -2,8 +2,24 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Budinir - Profesional artikel</title>
     @include('layouts.header')
+    <title>Website Artikel Gratis - Budinir</title>
+    <meta name="title" content="Website Artikel Gratis - Budinir" />
+    <meta name="description" content="Kami dengan senang hati menyajikan kumpulan artikel-artikel yang bervariasi dan dapat dinikmati oleh siapa saja, dari pelajar tingkat Menengah Atas, Mahasiswa, hingga para profesional yang ingin meningkatkan pengetahuan dan keterampilan mereka. Di sini, Anda akan menemukan berbagai artikel yang mencakup berbagai topik praktis, misalnya terkait dengan Project Management, Leadership, Software Development, serta berbagai pengetahuan praktis lainnya, misalnya Fleet Management System, Warehouse Management System dll. Semua artikel yang kami sajikan dapat digunakan secara gratis (free), baik untuk tujuan pendidikan, pengembangan diri, maupun kepentingan perusahaan dimana Anda bekerja. Kami berharap konten-konten ini dapat menjadi sumber inspirasi dan informasi yang berharga bagi Anda." />
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://budinir.com" />
+    <meta property="og:title" content="Website Artikel Gratis - Budinir" />
+    <meta property="og:description" content="Kami dengan senang hati menyajikan kumpulan artikel-artikel yang bervariasi dan dapat dinikmati oleh siapa saja, dari pelajar tingkat Menengah Atas, Mahasiswa, hingga para profesional yang ingin meningkatkan pengetahuan dan keterampilan mereka. Di sini, Anda akan menemukan berbagai artikel yang mencakup berbagai topik praktis, misalnya terkait dengan Project Management, Leadership, Software Development, serta berbagai pengetahuan praktis lainnya, misalnya Fleet Management System, Warehouse Management System dll. Semua artikel yang kami sajikan dapat digunakan secara gratis (free), baik untuk tujuan pendidikan, pengembangan diri, maupun kepentingan perusahaan dimana Anda bekerja. Kami berharap konten-konten ini dapat menjadi sumber inspirasi dan informasi yang berharga bagi Anda." />
+    <meta property="og:image" content="{{ asset('assets/') }}/imgs/news/img-truck-putih.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://budinir.com" />
+    <meta name="twitter:title" content="Website Artikel Gratis - Budinir" />
+    <meta name="twitter:description" content="Kami dengan senang hati menyajikan kumpulan artikel-artikel yang bervariasi dan dapat dinikmati oleh siapa saja, dari pelajar tingkat Menengah Atas, Mahasiswa, hingga para profesional yang ingin meningkatkan pengetahuan dan keterampilan mereka. Di sini, Anda akan menemukan berbagai artikel yang mencakup berbagai topik praktis, misalnya terkait dengan Project Management, Leadership, Software Development, serta berbagai pengetahuan praktis lainnya, misalnya Fleet Management System, Warehouse Management System dll. Semua artikel yang kami sajikan dapat digunakan secara gratis (free), baik untuk tujuan pendidikan, pengembangan diri, maupun kepentingan perusahaan dimana Anda bekerja. Kami berharap konten-konten ini dapat menjadi sumber inspirasi dan informasi yang berharga bagi Anda." />
+    <meta name="twitter:image" content="{{ asset('assets/') }}/imgs/news/img-truck-putih.png" />
 </head>
 
 <body class="home-page-1">
@@ -61,7 +77,7 @@
                                 <div class="slide-fade-2">
                                     @foreach ($form4 as $item)
                                     <div class="position-relative post-slider-3 pb-120">
-                                        <div class="thumb-overlay position-relative border-radius-10" style="background-image: url({{ asset('assets/photo/' . $item->photo) }})">
+                                        <div class="thumb-overlay position-relative border-radius-10" style="background-image: url({{ asset('storage/assets/photo/' . $item->photo) }})">
                                             <a class="img-link" href="/artikel/detail/{{ $item->slug }}"></a>
                                         </div>
                                         <div class="post-content-overlay layout-2">
@@ -107,7 +123,7 @@
                                             $tagitem = explode(',', $item->tags);
                                         @endphp
                                         @foreach ($tagitem as $tag)
-                                        <a href="{{ route('search.tag', $item->title) }}" class="tag-category bg-brand-1 shadown-1 text-white button-shadow hover-up-3">{{ $tag }}</a>
+                                        <a href="{{ route('search.tag', $tag) }}" class="tag-category bg-brand-1 shadown-1 text-white button-shadow hover-up-3">{{ $tag }}</a>
                                         @endforeach
                                     </div>
                                 </div>

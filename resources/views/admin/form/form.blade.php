@@ -86,12 +86,12 @@
                             <small class="text-light fw-medium">Insert thumbnail</small>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">header photo</label>
-                                <input class="form-control" name="photo" type="photo" id="formFile" />
+                                <input class="form-control" name="photo" type="file" id="formFile"/>
                             </div>
                             <small class="text-light fw-medium">Insert file</small>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">pdf/word/excel</label>
-                                <input class="form-control" name="file" type="file" id="formFile" accept="application/pdf" />
+                                <input class="form-control" name="file" type="file" id="formFile" accept="application/pdf/word/excel" />
                             </div>
                           <div class="row">
                             <div class="col-12">
@@ -103,7 +103,7 @@
                       <div class="card-body">
                       </div>
                     </div>
-                  </div>
+                </div>
                   <!-- /Bootstrap Validation -->
             </div>
 

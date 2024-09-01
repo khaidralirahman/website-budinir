@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use PhpOffice\PhpWord\IOFactory;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Models\Form;
@@ -74,28 +77,33 @@ class FormController extends Controller
         $dataUpload = new Form();
         $dataUpload->title = $request->title;
         $dataUpload->tags = $request->tags;
-        $tagsArray = $request->tags ?? []; // Default to an empty array if not provided
-        $dataUpload->tags = implode(',', $tagsArray); // Convert array to comma-separated string
+        $tagsArray = $request->tags ?? [];
+        $dataUpload->tags = implode(',', $tagsArray);
         $dataUpload->description = $request->description;
         $dataUpload->contributor = $request->contributor;
 
         if ($request->hasFile('photo')) {
-            $upload = $request->file('photo');
-            $nameFile = time() . rand(100, 999) . "." . $upload->getClientOriginalExtension();
-            $upload->move(public_path('assets/photo'), $nameFile);
-            $dataUpload->photo = $nameFile;
+            $photo = $request->file('photo');
+            $photoName = time() . rand(100, 999) . "." . $photo->getClientOriginalExtension();
+            $photoPath = $photo->storeAs('assets/photo', $photoName, 'public');
+            $dataUpload->photo = $photoPath;
         }
 
         if ($request->hasFile('file')) {
-            $upload = $request->file('file');
-            $nameFile = time() . rand(100, 999) . "." . $upload->getClientOriginalExtension();
-            $upload->move(public_path('assets/file'), $nameFile);
-            $dataUpload->photo = $nameFile;
+            $file = $request->file('file');
+            $fileName = time() . rand(100, 999) . "." . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('assets/file') . '/' . $fileName;
+            $dataUpload->file = $filePath;
+
+            if (in_array($file->getClientOriginalExtension(), ['doc', 'docx'])) {
+                $pdfFilePath = $this->convertWordToPdf($filePath);
+                $dataUpload->file = basename($pdfFilePath);
+            } else {
+                $dataUpload->file = $fileName;
+            }
         }
 
-        // Generate slug from title
         $slug = Str::slug($request->title);
-        // Check if the generated slug already exists, if so, append a number to make it unique
         $i = 1;
         while (Form::where('slug', $slug)->exists()) {
             $slug = Str::slug($request->title . '-' . $i);
@@ -106,6 +114,33 @@ class FormController extends Controller
         $dataUpload->save();
 
         return redirect('/admin/form')->with('success', 'New data added successfully!');
+    }
+
+    public function convertWordToPdf($filePath)
+    {
+        $phpWord = IOFactory::load($filePath);
+
+        $tempHtmlFilePath = storage_path('app/temp.html');
+        $objWriter = IOFactory::createWriter($phpWord, 'HTML');
+        $objWriter->save($tempHtmlFilePath);
+
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $dompdf = new Dompdf($options);
+
+        $htmlContent = file_get_contents($tempHtmlFilePath);
+        $dompdf->loadHtml($htmlContent);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $pdfOutput = $dompdf->output();
+
+        $pdfFilePath = str_replace('.docx', '.pdf', $filePath);
+        file_put_contents($pdfFilePath, $pdfOutput);
+
+        unlink($tempHtmlFilePath);
+
+        return $pdfFilePath;
     }
 
     /**

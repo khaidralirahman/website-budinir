@@ -81,7 +81,7 @@
                                         <object data="{{ asset('assets/file/' . $form->file) }}"
                                             type="application/pdf" width="100%" height="600px">
                                             <p>Browser tidak mendukung tampilan PDF. Anda dapat <a
-                                                    href="{{ asset('assets/documentJabatans/' . $form->file) }}"
+                                                    href="{{ asset('assets/file/' . $form->file) }}"
                                                     download>men-download</a> dokumen ini.</p>
                                         </object>
                                     </div>

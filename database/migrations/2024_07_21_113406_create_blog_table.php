@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('photo')->nullable();
             $table->string('file')->nullable();
+            $table->bigInteger('views')->nullable();
             $table->unsignedBigInteger('likes')->default(0);
             $table->unsignedBigInteger('comments')->default(0);
             $table->string('slug')->unique();

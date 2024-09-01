@@ -43,6 +43,12 @@
             <div data-i18n="Tag">Tag</div>
         </a>
       </li>
+      <li class="menu-item {{ Request::is('admin/message') ? 'active' : '' }}">
+        <a href="/admin/message" class="menu-link">
+            <i class="menu-icon tf-icons ti ti-tags"></i>
+            <div data-i18n="Pesan">Pesan</div>
+        </a>
+      </li>
       {{-- <li class="menu-item {{ Request::is('admin/tentang-saya') ? 'active' : '' }}">
         <a href="/admin/tentang-saya" class="menu-link">
             <i class="menu-icon tf-icons ti ti-user"></i>

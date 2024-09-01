@@ -77,6 +77,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:super_admin']], function () {
     Route::get('/admin/tentang-saya', [AboutUsController::class, 'admin']);
 
     Route::get('/admin/message', [ContactController::class, 'message']);
+    Route::get('/admin/message/{id}', [ContactController::class, 'show'])->name('messages.show');
+    Route::delete('/admin/message/delete/{id}', [ContactController::class, 'destroy'])->name('messages.delete');
 });
 
 

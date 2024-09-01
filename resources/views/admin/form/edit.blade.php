@@ -117,9 +117,9 @@
                                     <small class="text-light fw-medium">Input file</small>
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label">File PDF</label>
-                                        <img src="{{ asset('assets/photo/' . $form->file) }}" class="img-thumbnail"
+                                        <img src="{{ asset('assets/file/' . $form->file) }}" class="img-thumbnail"
                                             height="10%" width="50%"></img>
-                                        <input class="form-control" name="file" type="file" id="formFile" />
+                                        <input class="form-control" name="file" type="file" id="formFile" accept="application/pdf/word/excel"/>
                                     </div>
                                     <div class="d-grid gap-2 col-lg-6 mx-auto">
                                         <button class="btn btn-primary btn-lg submit" type="submit">Save</button>

@@ -423,8 +423,8 @@ header .search-icon .ti-close,
 .color-info{padding:20px;}
 
 /*Footer layouts*/
-.bottom-area-2{background-image:url(../imgs/theme/sketch-2.png);background-repeat:no-repeat;background-position:right bottom;}
-.bottom-area-2 .widget-about{background-image:url(../imgs/theme/sketch-3.png);background-repeat:no-repeat;background-position:right bottom;}
+.bottom-area-2{background-image:url();background-repeat:no-repeat;background-position:right bottom;}
+.bottom-area-2 .widget-about{background-image:url();background-repeat:no-repeat;background-position:right bottom;}
 .bottom-area-2 p{color:#ddd}
 footer.bg-dark{color:#fff}
 footer.bg-dark a{color:#ddd}

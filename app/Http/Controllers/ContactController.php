@@ -20,8 +20,8 @@ class ContactController extends Controller
 
     public function message()
     {
-        $message = Inbox::all();
-        return view('admin.message.index', compact('message'));
+        $messages = Inbox::latest()->paginate(5);
+        return view('admin.message.index', compact('messages'));
     }
 
     /**
@@ -46,6 +46,7 @@ class ContactController extends Controller
         $newdata->user_id = Auth::id();
         $newdata->email = $request->email;
         $newdata->phone = $request->phone;
+        $newdata->address = $request->address;
         $newdata->message = $request->message;
 
         $newdata->save();
@@ -58,7 +59,8 @@ class ContactController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $messages = Inbox::findOrFail($id);
+        return response()->json($messages);
     }
 
     /**
@@ -82,6 +84,9 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $messages = Inbox::findOrFail($id);
+        $messages->delete();
+
+        return back()->with('success', 'pesan berhasil dihaspus!');
     }
 }

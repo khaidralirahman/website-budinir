@@ -22,11 +22,6 @@
                 <div class="archive-header pb-65">
                     <div class="archive-header-title">
                         <h1 class="font-heading mb-20" style="color: #6482ad;">Hasil Pencarian</h1>
-                        <div class="d-flex align-items-center" style="gap: 15px;">
-                            <h2 class="font-heading ">Katerori</h2>
-                            <i class="fa-solid fa-chevron-right"></i>
-                            <h2 class="font-heading " style="color: #6482ad;">{{ $tag }}</h2>
-                        </div>
                     </div>
                 </div>
                 <div class="hr"></div>

@@ -2,8 +2,24 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Budinir - Profesional blog and articles</title>
     @include('layouts.header')
+    <title>{{ $Form->title }} - Budinir</title>
+    <meta name="title" content="{{ $Form->title }}" />
+    <meta name="description" content="{{ substr(strip_tags($Form->description), 0, 150) }}{{ strlen(strip_tags($Form->description)) > 150 ? '...' : '' }}" />
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ $Form->slug }}" />
+    <meta property="og:title" content="{{ $Form->title }}" />
+    <meta property="og:description" content="{{ substr(strip_tags($Form->description), 0, 150) }}{{ strlen(strip_tags($Form->description)) > 150 ? '...' : '' }}" />
+    <meta property="og:image" content="{{ asset('assets/photo/' . $Form->photo) }}" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="{{ $Form->slug }}" />
+    <meta name="twitter:title" content="{{ $Form->title }}" />
+    <meta name="twitter:description" content="{{ substr(strip_tags($Form->description), 0, 150) }}{{ strlen(strip_tags($Form->description)) > 150 ? '...' : '' }}" />
+    <meta name="twitter:image" content="{{ asset('assets/photo/' . $Form->photo) }}" />
 </head>
 
 <body class="home-page-1">
@@ -83,20 +99,18 @@
                                 </form>
                             </li>
                             <li class="list-inline-item text-dark"><span>Share this: </span></li>
-                            <li class="list-inline-item">
-                                <a id="copyButton" class="social-icon tw text-xs-center " onclick="copyToClipboard()">
-                                    <i class="fa-solid fa-copy"></i>
-                                </a>
-                            </li>
+                            <a id="copyButton" class="btn " onclick="copyToClipboard()">
+                                <i class="fas fa-copy"></i>
+                            </a>
                         </ul>
                     </div>
                 </div>
                 <!--Comments-->
                 <div class="comments-area wow fadeIn animated">
                     <div class="widget-header-2 position-relative mb-30">
-                        <h3 class="mt-5 mb-30 font-heading">Comments</h3>
+                        <h3 class="mt-5 mb-30 font-heading">Komentar</h3>
                     </div>
-                    @foreach ($Form->comment as $comment)
+                    @forelse ($Form->comment as $comment)
                     <div class="comment-list wow fadeIn animated">
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
@@ -117,7 +131,9 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                    @empty
+                        <h4>tidak ada komentar</h4>
+                    @endforelse
                 </div>
                 <!--comment form-->
                 <div class="comment-form wow fadeIn animated pb-35">

@@ -2,8 +2,24 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Budinir - Profesional blog and articles</title>
     @include('layouts.header')
+    <title>Kontak saya - Budinir</title>
+    <meta name="title" content="Kontak saya - Budinir" />
+    <meta name="description" content="Kumpulan Artikel gratis yang dibuat oleh Budi Nirwanto" />
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://budinir.com/artikel" />
+    <meta property="og:title" content="Kontak saya - Budinir" />
+    <meta property="og:description" content="Kumpulan Artikel gratis yang dibuat oleh Budi Nirwanto" />
+    <meta property="og:image" content="{{ asset('assets/') }}/imgs/authors/image22.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://budinir.com/artikel" />
+    <meta name="twitter:title" content="Kontak saya - Budinir" />
+    <meta name="twitter:description" content="Kumpulan Artikel gratis yang dibuat oleh Budi Nirwanto" />
+    <meta name="twitter:image" content="{{ asset('assets/') }}/imgs/authors/image22.png" />
 </head>
 
 <body class="home-page-1">
@@ -16,24 +32,20 @@
     <div class="bg-square"></div>
     @include('layouts.search')
     <main>
-        <section class="pt-65 pb-35 bg-brand-4">
-            <div class="container">
-                <div class="archive-header">
-                    <div class="archive-header-title">
-                        <h1 class="font-heading mb-30">Contact
-                        </h1>
-                        <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit<br> Asperiores non dolor officiis eaque corporis.</p>
-                    </div>
-                    <div class="breadcrumb">
-                        <a href="/" rel="nofollow">Home</a>
-                        <span></span> Contact
-                    </div>
+        <div class="entry-header entry-header-style-2 pb-80 pt-80 mb-50 text-white" style="background-image: url({{ asset('assets/') }}/imgs/authors/image22.png)">
+            <div class="entry-header-content">
+
+                <h1 class="entry-title mb-15 fw-700">
+                    Kontak Saya
+                </h1>
+                <div class="post-meta-2 font-md d-flext align-self-center mb-md-30">
+                    <span class=" text-white">Anda bisa mengirim pesan dengan mengisi form dibawah ini</span>
                 </div>
             </div>
-        </section>
-        <section class="pt-100 pb-65">
+        </div>
+        <section class="pt-50 pb-65">
             <div class="container">
-                <h3 class="font-heading mb-50">Get in Touch</h3>
+                <h3 class="font-heading mb-50">Formulir Pesan</h3>
                 <div class="row">
                     <div class="col-md-8">
                         <form class="form-contact comment_form" action="{{ route('kontak.store') }}" id="commentForm" method="POST">
@@ -61,14 +73,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-lg bg-dark text-white submit" type="submit">Submit</button>
+                                <button class="btn btn-lg bg-dark text-white submit" type="submit">Kirim</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-md-4">
                         <div class="pl-30">
-                            <div class="icon-map mb-15 hover-up-3">
-                                <img src="assets/imgs/theme/svg/map.svg" alt="">
+                            <div class="icon-map mb-15 hover-up-3" style="background: #6482ad;">
+                                <img src="assets/imgs/theme/svg/map.svg" style="filter: brightness(0) invert(1);" alt="">
                             </div>
                             <h5 class="mb-50">
                                 Jl. Bina Mukti No. 7, Komplek Buciper, Kota Cimahi-40512

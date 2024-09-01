@@ -53,38 +53,8 @@
                             <h5 class="card-header" style="padding: 25px 0px 10px 25px;">Tabel Pesan</h5>
                             <p style="padding: 0px 0px 0px 25px">Data pesan yang dikirim dari user</p>
                         </div>
-                        <a href="/admin/form/create" class="btn btn-primary" style="height: fit-content; padding: 15px 30px 15px 30px; margin-top: 20px; margin-right: 20px;">Tambah artikel</a>
 
                     </div>
-                    <form action="{{ route('form.search') }}" method="GET">
-                        @csrf
-                        <div class="col-md-12 d-flex justify-flex-start justify-content-space-between align-items-center ">
-                            <div  style="display: flex; align-items: center; height: fit-content; margin-right: 10px; width: 100%;">
-                                <h5 class="card-header" style="font-size: 16px;">cari artikel</h5>
-                                <input
-                                    type="search"
-                                    name="nama"
-                                    class="form-control"
-                                    placeholder="cari artikel berdasarkan judul"/>
-                              </div>
-                              <div style="display: flex; align-items: center; height: fit-content; margin-right: 10px; width: 100%;">
-                                <h5 class="card-header" style="font-size: 16px;">tanggal</h5>
-                                <input
-                                  type="text"
-                                  name="time"
-                                  class="form-control"
-                                  placeholder="YYYY-MM-DD to YYYY-MM-DD"
-                                  id="flatpickr-range" />
-                              </div>
-                            <div style="margin-right: 20px; width: 30%;" >
-                                <button type="submit" class="btn btn-outline-primary">
-                                    Cari data
-                                    <i class='bx bx-search'></i>
-                                </button>
-                            </div>
-
-                        </div>
-                    </form>
                     <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead>
@@ -92,18 +62,16 @@
                             <th>Nama pengirim</th>
                             <th>Email</th>
                             <th>Nomor hp</th>
-                            <th>Pesan</th>
                             <th>Waktu</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ( $message as $item )
+                            @foreach ( $messages as $item )
                             <tr>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
-                                <td>{{ $item->message }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>
                                     <div class="dropdown">
@@ -112,11 +80,17 @@
                                             <i class="ti ti-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <form action="{{ route('form.delete', $item->id) }}" method="POST">
-                                                @csrf
+                                            <form action=""
+                                                method="POST">
                                                 @method('DELETE')
-                                                <a class="dropdown-item" href="{{ route('form.detail', $item->id) }}"><i class="ti ti-eye me-2"></i> Detail</a>
-                                                <a class="dropdown-item" href="{{ route('form.edit', $item->id) }}"><i class="ti ti-pencil me-2"></i> Edit</a>
+                                                @csrf
+                                                <button type="button" class="dropdown-item btn-lihat me-2" data-bs-toggle="modal" data-bs-target="#basicModal" data-message-id="{{ $item->id }}">
+                                                        <i class="fa fa-eye me-2"></i>
+                                                        <span>Detail</span>
+                                                </button>
+                                                <a class="dropdown-item"
+                                                    href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to={{ $item->email }}" target="blank"><i
+                                                        class="ti ti-pencil me-2"></i> send email</a>
                                                 <button type="submit" class="dropdown-item"><i
                                                         class="ti ti-trash me-2"></i> Delete</button>
                                             </form>
@@ -129,55 +103,109 @@
                         </tbody>
                     </table>
                     </div>
-                    {{-- <nav aria-label="Page navigation" style="margin: 30px 30px 30px 20px;">
-                        <ul class="pagination pagination-sm">
-                            @if ($form->currentPage() > 1)
-                                <li class="page-item prev">
-                                    <a class="page-link" href="{{ $form->previousPageUrl() }}">
-                                        <i class="tf-icon fs-6 ti ti-chevrons-left"></i>
-                                    </a>
-                                </li>
-                            @endif
+                    <nav aria-label="Page navigation" style="margin: 30px 30px 30px 20px;">
+                  <ul class="pagination pagination-sm">
+                      @if ($messages->currentPage() > 1)
+                          <li class="page-item prev">
+                              <a class="page-link" href="{{ $messages->previousPageUrl() }}">
+                                  <i class="tf-icon fs-6 ti ti-chevrons-left"></i>
+                              </a>
+                          </li>
+                      @endif
 
-                            @if ($form->lastPage() > 1)
-                                <!-- First Page Link -->
-                                @if ($form->currentPage() > 3)
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ $form->url(1) }}">1</a>
-                                    </li>
-                                    @if ($form->currentPage() > 4)
-                                        <li class="page-item disabled"><span class="page-link">...</span></li>
-                                    @endif
-                                @endif
+                      @if ($messages->lastPage() > 1)
+                          <!-- First Page Link -->
+                          @if ($messages->currentPage() > 3)
+                              <li class="page-item">
+                                  <a class="page-link" href="{{ $messages->url(1) }}">1</a>
+                              </li>
+                              @if ($messages->currentPage() > 4)
+                                  <li class="page-item disabled"><span class="page-link">...</span></li>
+                              @endif
+                          @endif
 
-                                <!-- Page Numbers -->
-                                @for ($i = max(1, $form->currentPage() - 2); $i <= min($form->lastPage(), $form->currentPage() + 2); $i++)
-                                    <li class="page-item {{ $i == $form->currentPage() ? 'active' : '' }}">
-                                        <a class="page-link" href="{{ $form->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
+                          <!-- Page Numbers -->
+                          @for ($i = max(1, $messages->currentPage() - 2); $i <= min($messages->lastPage(), $messages->currentPage() + 2); $i++)
+                              <li class="page-item {{ $i == $messages->currentPage() ? 'active' : '' }}">
+                                  <a class="page-link" href="{{ $messages->url($i) }}">{{ $i }}</a>
+                              </li>
+                          @endfor
 
-                                <!-- Last Page Link -->
-                                @if ($form->currentPage() < $form->lastPage() - 2)
-                                    @if ($form->currentPage() < $form->lastPage() - 3)
-                                        <li class="page-item disabled"><span class="page-link">...</span></li>
-                                    @endif
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ $form->url($form->lastPage()) }}">{{ $form->lastPage() }}</a>
-                                    </li>
-                                @endif
-                            @endif
+                          <!-- Last Page Link -->
+                          @if ($messages->currentPage() < $messages->lastPage() - 2)
+                              @if ($messages->currentPage() < $messages->lastPage() - 3)
+                                  <li class="page-item disabled"><span class="page-link">...</span></li>
+                              @endif
+                              <li class="page-item">
+                                  <a class="page-link" href="{{ $messages->url($messages->lastPage()) }}">{{ $messages->lastPage() }}</a>
+                              </li>
+                          @endif
+                      @endif
 
-                            @if ($form->hasMorePages())
-                                <li class="page-item next">
-                                    <a class="page-link" href="{{ $form->nextPageUrl() }}">
-                                        <i class="tf-icon fs-6 ti ti-chevrons-right"></i>
-                                    </a>
-                                </li>
-                            @endif
-                        </ul>
-                    </nav> --}}
+                      @if ($messages->hasMorePages())
+                          <li class="page-item next">
+                              <a class="page-link" href="{{ $messages->nextPageUrl() }}">
+                                  <i class="tf-icon fs-6 ti ti-chevrons-right"></i>
+                              </a>
+                          </li>
+                      @endif
+                  </ul>
+              </nav>
                 </div>
+                <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Detail pesan</h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="row">
+                            <div class="col mb-3">
+                            <label for="name" class="form-label">Nama pengirim</label>
+                            <input type="text" id="name" class="form-control" readonly  />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" id="email" class="form-control" readonly  />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                            <label for="phone" class="form-label">No hp</label>
+                            <input type="text" id="phone" class="form-control" readonly  />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                            <label for="address" class="form-label">Alamat</label>
+                            <textarea class="form-control" id="address" rows="3" readonly
+                            style="padding: 0.375rem 0.75rem 0.375rem 0.5rem; resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                            <label for="message" class="form-label">Isi pesan</label>
+                            <textarea class="form-control" id="message" rows="3" readonly
+                            style="padding: 0.375rem 0.75rem 0.375rem 0.5rem; resize: none;"></textarea>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
                 <!--/ Basic Bootstrap Table -->
 
             </div>
@@ -225,5 +253,24 @@
     <script src="{{ asset('assets admin/assets/') }}/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
     <script src="{{ asset('assets admin/assets/') }}/vendor/libs/pickr/pickr.js"></script>
     <script src="{{ asset('assets admin/assets/') }}/js/forms-pickers.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn-lihat').on('click', function () {
+                var messageId = $(this).data('message-id');
+                $.ajax({
+                    type: 'GET',
+                    url: '/admin/message/' + messageId,
+                    success: function (data) {
+                        $('#name').val(data.name);
+                        $('#email').val(data.email);
+                        $('#phone').val(data.phone);
+                        $('#address').val(data.address);
+                        $('#message').val(data.message);
+                        $('#basicModal').modal('show');
+                    }
+                });
+            });
+        });
+    </script>
   </body>
 </html>

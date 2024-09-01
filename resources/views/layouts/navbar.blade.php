@@ -10,15 +10,16 @@
             </ul>
         </div>
         <div class="offcanvas-copyright mt-65">
-            <h6 class="text-muted text-uppercase mb-20 font-heading text-white">Flow Magazine</h6>
+            <h6 class="text-muted text-uppercase mb-20 font-heading text-white">Budinir</h6>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio suspendisse leo neque.
+                Kami dengan senang hati menyajikan kumpulan artikel-artikel yang bervariasi dan dapat dinikmati oleh siapa saja, dari pelajar tingkat Menengah Atas, Mahasiswa, hingga para profesional yang ingin meningkatkan pengetahuan dan keterampilan mereka.
             </p>
-            <p><strong class="color-black">Address</strong><br>
-                123 Main Street<br>
-                New York, NY 10001</p>
-            <p><strong class="color-black">Phone</strong><br>
-                (+01) 234 567 89</p>
+            <p><strong class="color-black">Alamat</strong><br>
+                Jl. Bina Mukti No. 7, <br>
+                Komplek Buciper, <br>
+                Kota Cimahi-40512</p>
+            <p><strong class="color-black">Telepon</strong><br>
+                +628117096666</p>
         </div>
     </div>
 </aside>
@@ -28,10 +29,10 @@
         <div class="container align-self-center">
             <div class="header-style-1">
                 <div class="logo" style="width: auto; display: flex; gap: 10px; align-items: center;">
-                    <a href="/" style="max-width: 50px; height: 50px;"><img src="{{ asset('assets/') }}/imgs/theme/logo.png" alt=""></a>
-                    <h2 class="post-title" style="width: 190px;">
+                    <a href="/" style="max-width: 30px; height: 30px;"><img src="{{ asset('assets/') }}/imgs/theme/logo.png" alt=""></a>
+                    <h4 class="post-title" >
                         <a href="/" style="font-weight: 700; color: 252525; ">BudiNir</a>
-                    </h2>
+                    </h4>
                 </div>
                 <div class="main-nav d-none d-lg-block">
                     <nav>

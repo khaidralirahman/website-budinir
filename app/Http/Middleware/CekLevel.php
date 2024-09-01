@@ -19,6 +19,6 @@ class CekLevel
         if (in_array($request->user()->level, $levels)) {
             return $next($request);
         }
-        return redirect($request);
+        return redirect()->back()->withErrors(['error' => 'Anda tidak memiliki hak akses ke halaman ini.']);
     }
 }

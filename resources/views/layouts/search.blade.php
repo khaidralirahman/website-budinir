@@ -4,7 +4,7 @@
         <div class=" pt-50 pb-50 ">
             <div class="row mb-20">
                 <div class="col-12 align-self-center main-search-form-cover m-auto">
-                    <p class="text-center text-white"><span class="display-1">Cari Artikel</span></p>
+                    <p class="text-center text-white"><span class="display-1" style="font-size: 30px">Cari Artikel</span></p>
                     <form action="{{ route('search') }}" method="GET" class="search-header">
                         @csrf
                         <div class="input-group w-100">

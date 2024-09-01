@@ -2,8 +2,24 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Budinir - Profesional artikel</title>
     @include('layouts.header')
+    <title>Halaman Artikel - Budinir</title>
+    <meta name="title" content="Halaman Artikel" />
+    <meta name="description" content="Kumpulan Artikel gratis yang dibuat oleh Budi Nirwanto" />
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://budinir.com/artikel" />
+    <meta property="og:title" content="Halaman Artikel" />
+    <meta property="og:description" content="Kumpulan Artikel gratis yang dibuat oleh Budi Nirwanto" />
+    <meta property="og:image" content="{{ asset('assets/') }}/imgs/authors/image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://budinir.com/artikel" />
+    <meta name="twitter:title" content="Halaman Artikel" />
+    <meta name="twitter:description" content="Kumpulan Artikel gratis yang dibuat oleh Budi Nirwanto" />
+    <meta name="twitter:image" content="{{ asset('assets/') }}/imgs/authors/image.png" />
 </head>
 
 <body class="home-page-1">
@@ -16,21 +32,17 @@
     <div class="bg-square"></div>
     @include('layouts.search')
     <main>
-        <section class="pt-65 pb-35 bg-brand-4">
-            <div class="container">
-                <div class="archive-header">
-                    <div class="archive-header-title">
-                        <h1 class="font-heading mb-30">Artikel
-                        </h1>
-                        <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit<br> Asperiores non dolor officiis eaque corporis.</p>
-                    </div>
-                    <div class="breadcrumb">
-                        <a href="/" rel="nofollow">Home</a>
-                        <span></span> Artikel
-                    </div>
+        <div class="entry-header entry-header-style-2 pb-80 pt-80 mb-50 text-white" style="background-image: url({{ asset('assets/') }}/imgs/authors/image.png)">
+            <div class="entry-header-content">
+
+                <h1 class="entry-title mb-15 fw-700">
+                    Artikel
+                </h1>
+                <div class="post-meta-2 font-md d-flext align-self-center mb-md-30">
+                    <span class=" text-white">Kumpulan Artikel gratis yang dibuat oleh Budi Nirwanto</span>
                 </div>
             </div>
-        </section>
+        </div>
         <section class="featured-grid pt-65 pb-65">
             <div class="container">
                 <div class="row">

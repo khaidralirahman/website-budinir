@@ -2,8 +2,24 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Budinir - Profesional blog and articles</title>
     @include('layouts.header')
+    <title>Tentang Budi Nirwanto - Budinir</title>
+    <meta name="title" content="Tentang Budi Nirwanto - Budinir" />
+    <meta name="description" content="Profile dari Budi Nirwanto" />
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://budinir.com/tentang-saya" />
+    <meta property="og:title" content="Tentang Budi Nirwanto - Budinir" />
+    <meta property="og:description" content="Profile dari Budi Nirwanto" />
+    <meta property="og:image" content="{{ asset('assets/') }}/imgs/imgs/news/img-truck.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://budinir.com/tentang-saya" />
+    <meta name="twitter:title" content="Tentang Budi Nirwanto - Budinir" />
+    <meta name="twitter:description" content="Profile dari Budi Nirwanto" />
+    <meta name="twitter:image" content="{{ asset('assets/') }}/imgs/imgs/news/img-truck.png" />
 </head>
 
 <body class="home-page-1">
@@ -34,9 +50,6 @@
                         <img src="assets/imgs/news/img-truck.png" alt="">
                     </div>
                 </div>
-            </div>
-            <div class="shape-arrow">
-                <img src="assets/imgs/theme/arrow.png" alt="">
             </div>
         </section>
         <section class="pt-65 pb-65 position-relative">
